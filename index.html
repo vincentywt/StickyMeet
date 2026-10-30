@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>StickyMeet Style Gallery</title>
-<meta name="description" content="Eleven design directions for the StickyMeet waitlist landing page.">
+<meta name="description" content="Twelve design directions for the StickyMeet waitlist landing page.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -80,13 +80,19 @@
 
   .p-neumorphism { background: #e4e9f0; }
   .p-neumorphism .t { font-weight: 700; color: #5b7cfa; padding: 16px 28px; border-radius: 22px; background: #e4e9f0; box-shadow: 8px 8px 16px #b8c0cc, -8px -8px 16px #fff; }
+
+  .p-minimalist { background: #ffffff; justify-content: flex-start; align-items: flex-end; padding: 22px; }
+  .p-minimalist::before { content: ''; position: absolute; left: 22px; top: 22px; width: 8px; height: 8px; border-radius: 50%; background: #2d5bff; }
+  .p-minimalist::after { content: ''; position: absolute; left: 22px; right: 22px; top: 50px; height: 1px; background: #e8e8ec; }
+  .p-minimalist .t { font-weight: 500; font-size: 30px; letter-spacing: -.045em; color: #0a0a0b; line-height: 1.05; }
+  .p-minimalist .t span { color: #6e6e76; }
 </style>
 </head>
 <body>
 <header class="wrap">
   <p class="eyebrow">StickyMeet · Meetup Guarantee · Hong Kong</p>
-  <h1>One waitlist page, eleven design styles.</h1>
-  <p class="lede">The same StickyMeet copy (a HK$100 show-up commitment that ends meetup no-shows) built in each of eleven design styles. Open one to see the full landing page.</p>
+  <h1>One waitlist page, twelve design styles.</h1>
+  <p class="lede">The same StickyMeet copy (a HK$100 show-up commitment that ends meetup no-shows) built in each of twelve design styles. Open one to see the full landing page.</p>
 </header>
 
 <main class="wrap grid">
@@ -101,6 +107,7 @@
   <a class="card" href="luxury/"><div class="preview p-luxury"><span class="t">StickyMeet</span></div><div class="meta"><h2>Luxury Typography <span>09</span></h2><p>Elegant and restrained. Serif display, gold foil, wide tracking.</p></div></a>
   <a class="card" href="graffiti/"><div class="preview p-graffiti"><span class="t">StickyMeet</span></div><div class="meta"><h2>Graffiti <span>10</span></h2><p>Street energy. Concrete, spray splats, dripping hand-lettering.</p></div></a>
   <a class="card" href="neumorphism/"><div class="preview p-neumorphism"><span class="t">StickyMeet</span></div><div class="meta"><h2>Neumorphism <span>11</span></h2><p>Soft extruded UI with a working slider and toggle demo.</p></div></a>
+  <a class="card" href="minimalist/"><div class="preview p-minimalist"><span class="t">Meetups that happen.<br><span>No-shows that cost.</span></span></div><div class="meta"><h2>Modern Minimalist <span>12</span></h2><p>Quiet and precise. Tight type, hairlines, one accent, dark mode.</p></div></a>
 </main>
 
 <footer><div class="wrap">© 2026 StickyMeet · Pre-launch concept pages</div></footer>

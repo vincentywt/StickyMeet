@@ -1,7 +1,7 @@
 # StickyMeet: waitlist landing pages
 
 Pre-launch waitlist page for **StickyMeet** (Meetup Guarantee / Commit Pay), a Hong Kong–first
-show-up commitment for in-person meetups, built in 11 design styles.
+show-up commitment for in-person meetups, built in 12 design styles.
 
 Live gallery: https://vincentywt.github.io/StickyMeet/
 
@@ -18,6 +18,7 @@ Live gallery: https://vincentywt.github.io/StickyMeet/
 | Luxury Typography | `/luxury/` |
 | Graffiti | `/graffiti/` |
 | Neumorphism | `/neumorphism/` |
+| Modern Minimalist | `/minimalist/` |
 
 Static HTML/CSS, no build step. Each page is self-contained apart from `assets/waitlist.js`.
 
