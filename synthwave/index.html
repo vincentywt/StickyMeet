@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StickyMeet · Synthwave</title>
+<meta name="description" content="StickyMeet: a small show-up commitment that ends meetup no-shows in Hong Kong. Join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Audiowide&family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0d0221;
+    --deep: #1a0638;
+    --purple: #541388;
+    --pink: #ff2a6d;
+    --hot: #f706cf;
+    --cyan: #05d9e8;
+    --sun1: #ffd319;
+    --sun2: #ff901f;
+    --sun3: #ff2975;
+    --text: #e6d9ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Exo 2', sans-serif; background: var(--night); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  a { color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+  body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 100; background: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); mix-blend-mode: overlay; }
+
+  header { position: absolute; top: 0; left: 0; right: 0; z-index: 5; padding: 22px 0; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Audiowide'; font-size: 22px; text-decoration: none; color: var(--cyan); text-shadow: 0 0 8px var(--cyan), 0 0 20px var(--cyan); letter-spacing: .06em; }
+  .nav-btn { font-family: 'Audiowide'; text-decoration: none; border: 2px solid var(--pink); color: var(--pink); padding: 8px 18px; border-radius: 4px; box-shadow: 0 0 12px var(--pink), inset 0 0 12px rgba(255,42,109,.4); text-shadow: 0 0 6px var(--pink); }
+
+  .hero { position: relative; min-height: 100vh; overflow: hidden; background: linear-gradient(180deg, #0d0221 0%, #261447 45%, #6b1d6b 62%, #2b0b3f 62.2%, #0d0221 100%); display: flex; flex-direction: column; justify-content: center; }
+  .stars { position: absolute; inset: 0 0 40% 0; background-image: radial-gradient(1px 1px at 10% 20%, #fff, transparent), radial-gradient(1px 1px at 30% 60%, #fff, transparent), radial-gradient(1.5px 1.5px at 55% 15%, #fff, transparent), radial-gradient(1px 1px at 75% 40%, #fff, transparent), radial-gradient(1px 1px at 90% 10%, #fff, transparent), radial-gradient(1.5px 1.5px at 20% 80%, #fff, transparent), radial-gradient(1px 1px at 65% 70%, #fff, transparent), radial-gradient(1px 1px at 45% 35%, #fff, transparent); opacity: .7; }
+  .sun { position: absolute; left: 50%; top: 62%; width: min(520px, 80vw); aspect-ratio: 1; transform: translate(-50%, -64%); border-radius: 50%; background: linear-gradient(180deg, var(--sun1) 0%, var(--sun2) 40%, var(--sun3) 75%, var(--hot) 100%); box-shadow: 0 0 80px rgba(255,41,117,.6), 0 0 160px rgba(255,144,31,.35);
+    -webkit-mask: linear-gradient(180deg, #000 0 50%, transparent 50% 53%, #000 53% 60%, transparent 60% 64%, #000 64% 70%, transparent 70% 75%, #000 75% 80%, transparent 80% 86%, #000 86% 90%, transparent 90% 97%, #000 97%);
+            mask: linear-gradient(180deg, #000 0 50%, transparent 50% 53%, #000 53% 60%, transparent 60% 64%, #000 64% 70%, transparent 70% 75%, #000 75% 80%, transparent 80% 86%, #000 86% 90%, transparent 90% 97%, #000 97%); }
+  .mountains { position: absolute; left: 0; right: 0; top: calc(62% - 90px); height: 92px; }
+  .grid-floor { position: absolute; left: -50%; right: -50%; bottom: 0; height: 38%; perspective: 300px; overflow: hidden; }
+  .grid-floor::before { content: ''; position: absolute; inset: -100% 0 0 0; background-image: linear-gradient(var(--hot) 2px, transparent 2px), linear-gradient(90deg, var(--hot) 2px, transparent 2px); background-size: 60px 60px; transform: rotateX(62deg); transform-origin: top; animation: drive 1.2s linear infinite; filter: drop-shadow(0 0 4px var(--hot)); }
+  @keyframes drive { to { background-position: 0 60px; } }
+  .grid-floor::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #2b0b3f 0%, transparent 40%); }
+
+  .hero-content { position: relative; z-index: 3; text-align: center; padding: 120px 20px 38vh; }
+  .eyebrow { font-family: 'Audiowide'; letter-spacing: .4em; font-size: 13px; color: var(--cyan); text-shadow: 0 0 8px var(--cyan); margin-bottom: 18px; }
+  h1 { font-family: 'Monoton'; font-weight: 400; font-size: clamp(44px, 9vw, 120px); line-height: 1; letter-spacing: .04em;
+    background: linear-gradient(180deg, #fff 0%, #cfe9ff 38%, #4b6cb7 48%, #fff 52%, #ff9de2 70%, #f706cf 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 4px 0 #541388) drop-shadow(0 0 24px rgba(247,6,207,.6)); }
+  .script { font-family: 'Audiowide'; font-size: clamp(22px, 3.4vw, 38px); color: var(--pink); text-shadow: 0 0 6px var(--pink), 0 0 22px var(--pink); transform: rotate(-4deg); margin: 6px 0 22px; }
+  .lede { max-width: 620px; margin: 0 auto 30px; font-size: 18px; color: #f2e9ff; text-shadow: 0 2px 10px #0d0221; }
+  .btn { display: inline-block; font-family: 'Audiowide'; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; color: #fff; text-decoration: none; padding: 16px 34px; border: 0; border-radius: 4px; cursor: pointer; background: linear-gradient(90deg, var(--hot), var(--pink) 50%, var(--sun2)); box-shadow: 0 0 20px rgba(247,6,207,.7), 0 0 50px rgba(255,42,109,.4); transition: filter .2s; }
+  .btn:hover { filter: brightness(1.2) saturate(1.2); }
+
+  section { padding: 90px 0; position: relative; }
+  h2 { font-family: 'Audiowide'; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; text-align: center; font-size: clamp(28px, 4.5vw, 46px); margin-bottom: 48px; color: var(--cyan); text-shadow: 0 0 6px var(--cyan), 0 0 24px rgba(5,217,232,.6); }
+
+  .panel { background: linear-gradient(180deg, rgba(84,19,136,.35), rgba(13,2,33,.6)); border: 1px solid rgba(247,6,207,.5); border-radius: 8px; box-shadow: 0 0 24px rgba(247,6,207,.18), inset 0 0 24px rgba(5,217,232,.06); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .step { padding: 28px 22px; }
+  .step .n { font-family: 'Monoton'; font-size: 52px; line-height: 1; background: linear-gradient(180deg, var(--sun1), var(--hot)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .step h3 { font-family: 'Audiowide'; font-weight: 400; font-size: 18px; color: #fff; margin: 12px 0 8px; letter-spacing: .04em; }
+  .step p { font-size: 15px; }
+
+  .who { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .who span { font-family: 'Audiowide'; font-size: 15px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--cyan); color: var(--cyan); box-shadow: 0 0 10px rgba(5,217,232,.4); }
+  .who span:nth-child(even) { border-color: var(--pink); color: var(--pink); box-shadow: 0 0 10px rgba(255,42,109,.4); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+  .stat { padding: 32px 22px; }
+  .stat strong { font-family: 'Audiowide'; font-weight: 400; font-size: 52px; display: block; color: var(--sun1); text-shadow: 0 0 10px var(--sun2), 0 0 30px var(--sun3); line-height: 1.1; margin-bottom: 8px; }
+
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+  .tier { padding: 34px 26px; text-align: center; }
+  .tier.glow { border-color: var(--cyan); box-shadow: 0 0 40px rgba(5,217,232,.35), inset 0 0 30px rgba(5,217,232,.12); transform: scale(1.04); }
+  .tier h3 { font-family: 'Audiowide'; font-weight: 400; letter-spacing: .2em; color: var(--pink); }
+  .tier .price { font-family: 'Audiowide'; font-size: 36px; color: #fff; margin: 10px 0 2px; text-shadow: 0 0 12px rgba(255,255,255,.4); }
+  .tier ul { list-style: none; margin-top: 16px; }
+  .tier li { padding: 8px 0; border-top: 1px solid rgba(230,217,255,.15); }
+  .fine { text-align: center; margin-top: 24px; font-size: 14px; opacity: .7; }
+
+  .faq { max-width: 760px; margin: 0 auto; display: grid; gap: 14px; }
+  .faq div { padding: 22px 24px; }
+  .faq h3 { font-family: 'Audiowide'; font-weight: 400; color: var(--sun1); font-size: 18px; margin-bottom: 6px; }
+
+  .join { padding: 56px 36px; text-align: center; border-color: var(--cyan); }
+  form { display: flex; flex-wrap: wrap; gap: 12px; max-width: 700px; margin: 0 auto; }
+  input, select { flex: 1 1 220px; font: 16px 'Exo 2'; padding: 15px 18px; border-radius: 4px; border: 1px solid var(--hot); background: rgba(13,2,33,.85); color: #fff; box-shadow: inset 0 0 12px rgba(247,6,207,.25); }
+  input::placeholder { color: #a48ccc; }
+  input:focus, select:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 14px rgba(5,217,232,.5); }
+  [data-status] { flex-basis: 100%; font-family: 'Audiowide'; color: var(--cyan); text-shadow: 0 0 8px var(--cyan); min-height: 1.4em; }
+
+  footer { padding: 36px 0; border-top: 1px solid rgba(247,6,207,.3); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 860px) {
+    .steps { grid-template-columns: 1fr 1fr; }
+    .stats, .tiers { grid-template-columns: 1fr; }
+    .tier.glow { transform: none; }
+  }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } .join { padding: 36px 18px; } }
+  @media (prefers-reduced-motion: reduce) { .grid-floor::before { animation: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">StickyMeet</a>
+    <a class="nav-btn" href="#join">Waitlist</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="sun" aria-hidden="true"></div>
+  <svg class="mountains" viewBox="0 0 1200 92" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 92 L120 40 L210 70 L330 18 L450 66 L560 30 L640 72 L760 22 L880 62 L980 34 L1090 70 L1200 44 L1200 92Z" fill="#1a0638" stroke="#f706cf" stroke-width="2"/>
+  </svg>
+  <div class="grid-floor" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="eyebrow">MEETUP GUARANTEE · HONG KONG</p>
+    <h1>NO SHOW<br>NO MORE</h1>
+    <p class="script">see you at the meet ✦</p>
+    <p class="lede">They lock in a HK$100 show-up commitment from AlipayHK, WeChat Pay or FPS. You both arrive and it rewinds back to them in full. They ghost and it plays out to you.</p>
+    <a class="btn" href="#join">Join the waitlist</a>
+  </div>
+</div>
+
+<main>
+  <section id="how" class="wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="panel step"><div class="n">01</div><h3>Create link</h3><p>Set time, place and a HK$50–200 commitment. Beam it over WhatsApp or Carousell chat.</p></div>
+      <div class="panel step"><div class="n">02</div><h3>They commit</h3><p>Paid from their usual wallet. A licensed payment provider holds the funds. We never do.</p></div>
+      <div class="panel step"><div class="n">03</div><h3>Check in</h3><p>GPS geofence + 6-digit code at the spot. Location is read only when you tap.</p></div>
+      <div class="panel step"><div class="n">04</div><h3>Auto-settle</h3><p>Both there: full refund in minutes. A flake: it's paid to whoever showed.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Made for</h2>
+    <div class="who"><span>Plumbers</span><span>Electricians</span><span>AC Cleaners</span><span>Tutors</span><span>Coaches</span><span>Carousell Sellers</span><span>Marketplace</span><span>Nails &amp; Lashes</span><span>Massage</span><span>Photo Shoots</span><span>Flat Viewings</span><span>Pet Rehoming</span></div>
+  </section>
+
+  <section class="wrap">
+    <div class="stats">
+      <div class="panel stat"><strong>~40%</strong>no-show rate reported by organisers of free RSVP meetups</div>
+      <div class="panel stat"><strong>HK$100</strong>a micro-commitment, not 4.9% of the full price held in escrow</div>
+      <div class="panel stat"><strong>$0</strong>held by StickyMeet. A licensed provider runs the money.</div>
+    </div>
+  </section>
+
+  <section id="pricing" class="wrap">
+    <h2>Pricing</h2>
+    <div class="tiers">
+      <div class="panel tier"><h3>SOFT</h3><div class="price">FREE</div><p>always on</p><ul><li>Reminders</li><li>Check-in</li><li>MeetupScore</li></ul></div>
+      <div class="panel tier glow"><h3>COMMIT</h3><div class="price">HK$15–20</div><p>per meetup</p><ul><li>HK$50–200 commitment</li><li>Auto refund / payout</li><li>Human disputes</li></ul></div>
+      <div class="panel tier"><h3>POWER</h3><div class="price">HK$99–149</div><p>per month</p><ul><li>Unlimited commits</li><li>Verified badge</li><li>Priority support</li></ul></div>
+    </div>
+    <p class="fine">Indicative pre-launch pricing.</p>
+  </section>
+
+  <section class="wrap">
+    <h2>FAQ</h2>
+    <div class="faq">
+      <div class="panel"><h3>Do you hold my money?</h3><p>No. A licensed payment provider collects and refunds. StickyMeet only sends the refund or payout instruction.</p></div>
+      <div class="panel"><h3>What if GPS glitches?</h3><p>Upload a photo from the spot. A human reviews disputes within 24–48 hours.</p></div>
+      <div class="panel"><h3>What's MeetupScore?</h3><p>A 0–1000 reputation from completed meetups and flake rate. Never for sale.</p></div>
+      <div class="panel"><h3>When's launch?</h3><p>Hong Kong soft launch. Waitlist members get in first.</p></div>
+    </div>
+  </section>
+
+  <section id="join" class="wrap">
+    <div class="panel join">
+      <h2 style="margin-bottom:24px">Enter the waitlist</h2>
+      <form data-waitlist="synthwave" data-success="✦ You're in. See you at launch. ✦">
+        <input type="email" name="email" placeholder="your@email.com" aria-label="Email" required>
+        <select name="role" aria-label="Role">
+          <option>I sell on Carousell / Marketplace</option>
+          <option>I run a trade business</option>
+          <option>I tutor or coach</option>
+          <option>I work in beauty &amp; wellness</option>
+          <option>I buy second-hand</option>
+          <option>Something else</option>
+        </select>
+        <button class="btn" type="submit">Press start</button>
+        <p data-status role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 StickyMeet · Hong Kong · Pre-launch</span><a href="../">← All design styles</a></div></footer>
+<script src="../assets/waitlist.js"></script>
+</body>
+</html>

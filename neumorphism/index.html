@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StickyMeet · Neumorphism</title>
+<meta name="description" content="StickyMeet: a small show-up commitment that ends meetup no-shows in Hong Kong. Join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e4e9f0;
+    --hi: #ffffff;
+    --lo: #b8c0cc;
+    --text: #3d4a5c;
+    --muted: #7d8899;
+    --accent: #5b7cfa;
+    --accent2: #33c2a4;
+    --out: 9px 9px 18px var(--lo), -9px -9px 18px var(--hi);
+    --out-sm: 5px 5px 10px var(--lo), -5px -5px 10px var(--hi);
+    --in: inset 6px 6px 12px var(--lo), inset -6px -6px 12px var(--hi);
+    --in-sm: inset 3px 3px 6px var(--lo), inset -3px -3px 6px var(--hi);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 22px; }
+  .raised { background: var(--bg); box-shadow: var(--out); border-radius: 28px; }
+  .inset { background: var(--bg); box-shadow: var(--in); border-radius: 22px; }
+
+  header { padding: 24px 0; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px; text-decoration: none; }
+  .logo-dot { width: 44px; height: 44px; border-radius: 50%; box-shadow: var(--out-sm); display: grid; place-items: center; }
+  .logo-dot::after { content: ''; width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: inset 2px 2px 4px rgba(0,0,0,.15); }
+  .nav-pill { display: flex; gap: 6px; padding: 6px; border-radius: 999px; box-shadow: var(--in-sm); }
+  .nav-pill a { text-decoration: none; padding: 8px 18px; border-radius: 999px; font-weight: 700; font-size: 14px; color: var(--muted); transition: box-shadow .2s, color .2s; }
+  .nav-pill a:hover { box-shadow: var(--out-sm); color: var(--text); }
+
+  .btn { display: inline-flex; align-items: center; gap: 10px; font: 800 17px 'Nunito'; color: var(--accent); background: var(--bg); border: 0; padding: 18px 34px; border-radius: 999px; box-shadow: var(--out); text-decoration: none; cursor: pointer; transition: box-shadow .2s, transform .2s; }
+  .btn:hover { box-shadow: var(--out-sm); }
+  .btn:active { box-shadow: var(--in); transform: scale(.99); }
+
+  .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; padding: 56px 0 90px; }
+  .chip { display: inline-block; padding: 8px 18px; border-radius: 999px; box-shadow: var(--in-sm); font-weight: 700; font-size: 13px; color: var(--muted); letter-spacing: .06em; margin-bottom: 24px; }
+  h1 { font-weight: 800; font-size: clamp(40px, 6vw, 68px); line-height: 1.05; letter-spacing: -.02em; margin-bottom: 22px; }
+  h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lede { font-size: 18px; color: var(--muted); max-width: 500px; margin-bottom: 34px; }
+
+  .device { padding: 30px; }
+  .device h3 { font-weight: 800; font-size: 15px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 18px; }
+  .amount { padding: 22px; text-align: center; margin-bottom: 22px; }
+  .amount output { font-size: 46px; font-weight: 800; display: block; line-height: 1; }
+  .amount small { color: var(--muted); font-weight: 700; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 14px; border-radius: 999px; background: var(--bg); box-shadow: var(--in-sm); margin: 6px 0 24px; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 32px; height: 32px; border-radius: 50%; background: var(--bg); box-shadow: var(--out-sm); cursor: pointer; border: 0; }
+  input[type=range]::-moz-range-thumb { width: 32px; height: 32px; border-radius: 50%; background: var(--bg); box-shadow: var(--out-sm); cursor: pointer; border: 0; }
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; font-weight: 700; }
+  .toggle { width: 64px; height: 34px; border-radius: 999px; box-shadow: var(--in-sm); position: relative; cursor: pointer; border: 0; background: var(--bg); }
+  .toggle::after { content: ''; position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%; background: var(--bg); box-shadow: var(--out-sm); transition: left .25s, background .25s; }
+  .toggle[aria-pressed=true]::after { left: 34px; background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+  .outcome { margin-top: 18px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-weight: 700; }
+  .led { width: 14px; height: 14px; border-radius: 50%; background: var(--accent2); box-shadow: 0 0 10px var(--accent2); flex: none; transition: background .25s, box-shadow .25s; }
+  .led.warn { background: #f59e6b; box-shadow: 0 0 10px #f59e6b; }
+
+  section { padding: 70px 0; }
+  .head { text-align: center; margin-bottom: 48px; }
+  h2 { font-weight: 800; font-size: clamp(32px, 4.6vw, 46px); letter-spacing: -.02em; }
+  .head p { color: var(--muted); font-size: 17px; margin-top: 8px; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+  .step { padding: 30px 24px; }
+  .step .ic { width: 64px; height: 64px; border-radius: 20px; box-shadow: var(--in); display: grid; place-items: center; font-weight: 800; font-size: 22px; color: var(--accent); margin-bottom: 20px; }
+  .step h3 { font-weight: 800; font-size: 19px; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: 15px; }
+
+  .who { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .who span { padding: 14px 24px; border-radius: 999px; box-shadow: var(--out-sm); font-weight: 700; transition: box-shadow .2s; cursor: default; }
+  .who span:hover { box-shadow: var(--in-sm); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .stat { padding: 32px 26px; text-align: center; }
+  .stat .ring { width: 150px; height: 150px; margin: 0 auto 18px; border-radius: 50%; box-shadow: var(--out); display: grid; place-items: center; }
+  .stat .ring div { width: 116px; height: 116px; border-radius: 50%; box-shadow: var(--in); display: grid; place-items: center; font-weight: 800; font-size: 26px; color: var(--accent); }
+  .stat p { color: var(--muted); }
+
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }
+  .tier { padding: 34px 28px; }
+  .tier.sel { box-shadow: var(--in); }
+  .tier h3 { font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .tier .price { font-weight: 800; font-size: 38px; margin: 10px 0 2px; }
+  .tier.sel .price { color: var(--accent); }
+  .tier .per { color: var(--muted); margin-bottom: 20px; }
+  .tier ul { list-style: none; display: grid; gap: 12px; }
+  .tier li { display: flex; gap: 12px; align-items: center; font-weight: 600; }
+  .tier li::before { content: '✓'; width: 26px; height: 26px; flex: none; border-radius: 50%; box-shadow: var(--out-sm); display: grid; place-items: center; font-size: 13px; color: var(--accent2); font-weight: 800; }
+  .fine { text-align: center; margin-top: 26px; color: var(--muted); font-size: 14px; }
+
+  .faq { max-width: 760px; margin: 0 auto; display: grid; gap: 18px; }
+  .faq details { padding: 22px 26px; border-radius: 22px; box-shadow: var(--out-sm); transition: box-shadow .25s; }
+  .faq details[open] { box-shadow: var(--in-sm); }
+  .faq summary { font-weight: 800; font-size: 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
+  .faq summary::after { content: '+'; color: var(--accent); }
+  .faq details[open] summary::after { content: '–'; }
+  .faq p { color: var(--muted); margin-top: 10px; }
+
+  .join { padding: 56px 44px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: center; }
+  form { display: grid; gap: 18px; }
+  form input, form select { font: 600 17px 'Nunito'; color: var(--text); padding: 18px 22px; border: 0; border-radius: 18px; background: var(--bg); box-shadow: var(--in); appearance: none; }
+  form input::placeholder { color: #9aa4b3; }
+  form input:focus, form select:focus { outline: 2px solid rgba(91,124,250,.35); outline-offset: 2px; }
+  form .btn { justify-self: start; }
+  [data-status] { color: var(--accent2); font-weight: 800; min-height: 1.4em; }
+
+  footer { padding: 40px 0 56px; color: var(--muted); font-weight: 600; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 900px) {
+    .hero, .join { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .stats, .tiers { grid-template-columns: 1fr; }
+    .join { padding: 36px 22px; }
+    .nav-pill a:not(:last-child) { display: none; }
+  }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } .device { padding: 22px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><span class="logo-dot"></span>StickyMeet</a>
+    <nav class="nav-pill"><a href="#how">How</a><a href="#pricing">Pricing</a><a href="#join">Waitlist</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <span class="chip">MEETUP GUARANTEE · HONG KONG</span>
+      <h1>Meetups that <span>actually happen.</span></h1>
+      <p class="lede">The other person places a small show-up commitment of HK$100 with AlipayHK, WeChat Pay or FPS. Both arrive and it's refunded in full. If they flake, it's paid to you.</p>
+      <a class="btn" href="#join">Join the waitlist →</a>
+    </div>
+    <div class="raised device" aria-label="Interactive preview">
+      <h3>Try it</h3>
+      <div class="inset amount"><output id="amt">HK$100</output><small>show-up commitment</small></div>
+      <input type="range" id="range" min="50" max="200" step="10" value="100" aria-label="Commitment amount">
+      <div class="row"><span>They showed up</span><button class="toggle" id="tog" aria-pressed="true" aria-label="Toggle whether they showed up"></button></div>
+      <div class="inset outcome"><span class="led" id="led"></span><span id="out">Both checked in, so HK$100 is refunded to them.</span></div>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="head"><h2>How it works</h2><p>One link, shared in the chat you already use.</p></div>
+    <div class="steps">
+      <div class="raised step"><div class="ic">1</div><h3>Create a link</h3><p>Set time, place and a HK$50–200 commitment. Share on WhatsApp or Carousell.</p></div>
+      <div class="raised step"><div class="ic">2</div><h3>They commit</h3><p>Paid from their usual wallet and held by a licensed payment provider, not us.</p></div>
+      <div class="raised step"><div class="ic">3</div><h3>Check in</h3><p>GPS geofence + 6-digit code. Location is read only when you tap.</p></div>
+      <div class="raised step"><div class="ic">4</div><h3>Auto-settle</h3><p>Both there: full refund in minutes. A flake: paid to whoever showed.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h2>Built for</h2><p>Anyone who loses time when someone doesn't show.</p></div>
+    <div class="who"><span>Plumbers</span><span>Electricians</span><span>AC cleaners</span><span>Handymen</span><span>Tutors</span><span>Coaches</span><span>Carousell sellers</span><span>Marketplace</span><span>Nails &amp; lashes</span><span>Massage</span><span>Photographers</span><span>Flat viewings</span></div>
+  </section>
+
+  <section>
+    <div class="stats">
+      <div class="raised stat"><div class="ring"><div>~40%</div></div><p>no-show rate reported by organisers of free RSVP meetups.</p></div>
+      <div class="raised stat"><div class="ring"><div>HK$100</div></div><p>a small commitment, not 4.9% of the full price held in escrow.</p></div>
+      <div class="raised stat"><div class="ring"><div>$0</div></div><p>held by StickyMeet. A licensed provider handles the money.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="head"><h2>Planned pricing</h2><p>Start free. Pay when a meetup really matters.</p></div>
+    <div class="tiers">
+      <div class="raised tier"><h3>Soft</h3><div class="price">Free</div><div class="per">always</div><ul><li>Reminders</li><li>Check-in</li><li>MeetupScore</li></ul></div>
+      <div class="raised tier sel"><h3>Commit</h3><div class="price">HK$15–20</div><div class="per">per meetup</div><ul><li>HK$50–200 commitment</li><li>Auto refund / payout</li><li>Human disputes</li></ul></div>
+      <div class="raised tier"><h3>Power</h3><div class="price">HK$99–149</div><div class="per">per month</div><ul><li>Unlimited commits</li><li>Verified badge</li><li>Priority support</li></ul></div>
+    </div>
+    <p class="fine">Indicative pre-launch pricing.</p>
+  </section>
+
+  <section>
+    <div class="head"><h2>FAQ</h2></div>
+    <div class="faq">
+      <details><summary>Do you hold my money?</summary><p>No. A licensed payment provider collects and refunds. StickyMeet only sends the refund or payout instruction.</p></details>
+      <details><summary>What if GPS fails?</summary><p>Upload a photo from the spot. A real person reviews disputes within 24–48 hours.</p></details>
+      <details><summary>What's MeetupScore?</summary><p>A 0–1000 reputation from completed meetups and flake rate. It can't be bought.</p></details>
+      <details><summary>When does it launch?</summary><p>Hong Kong soft launch, with waitlist members first.</p></details>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="raised join">
+      <div><h2>Join the waitlist</h2><p style="color:var(--muted);margin-top:10px;font-size:17px">Be first in line when StickyMeet launches in Hong Kong.</p></div>
+      <form data-waitlist="neumorphism">
+        <input type="email" name="email" placeholder="you@email.com" aria-label="Email" required>
+        <select name="role" aria-label="Role">
+          <option>I sell on Carousell / Marketplace</option>
+          <option>I run a trade business</option>
+          <option>I tutor or coach</option>
+          <option>I work in beauty &amp; wellness</option>
+          <option>I buy second-hand</option>
+          <option>Something else</option>
+        </select>
+        <button class="btn" type="submit">Join the waitlist</button>
+        <p data-status role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 StickyMeet · Hong Kong · Pre-launch</span><a href="../">← All design styles</a></div></footer>
+<script>
+  (function () {
+    const range = document.getElementById('range'), amt = document.getElementById('amt');
+    const tog = document.getElementById('tog'), out = document.getElementById('out'), led = document.getElementById('led');
+    function render() {
+      const v = 'HK$' + range.value, showed = tog.getAttribute('aria-pressed') === 'true';
+      amt.textContent = v;
+      out.textContent = showed ? 'Both checked in, so ' + v + ' is refunded to them.' : 'No check-in, so ' + v + ' is paid out to you.';
+      led.classList.toggle('warn', !showed);
+    }
+    range.addEventListener('input', render);
+    tog.addEventListener('click', function () { tog.setAttribute('aria-pressed', String(tog.getAttribute('aria-pressed') !== 'true')); render(); });
+  })();
+</script>
+<script src="../assets/waitlist.js"></script>
+</body>
+</html>

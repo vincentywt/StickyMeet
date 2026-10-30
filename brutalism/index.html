@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StickyMeet · Brutalism</title>
+<meta name="description" content="StickyMeet: a small show-up commitment that ends meetup no-shows in Hong Kong. Join the waitlist.">
+<style>
+  :root { --bg: #e6e6e6; --fg: #000; --mid: #7a7a7a; --hard: #fff; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: 'Courier New', Courier, ui-monospace, monospace;
+    font-size: 16px; line-height: 1.45;
+  }
+  a { color: var(--fg); }
+  .page { max-width: 1100px; margin: 0 auto; border-left: 2px solid #000; border-right: 2px solid #000; background: var(--bg); }
+  .bar { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding: 8px 12px; font-size: 13px; text-transform: uppercase; flex-wrap: wrap; gap: 8px; }
+  .hero { padding: 24px 12px 0; border-bottom: 2px solid #000; }
+  h1 { font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: clamp(56px, 13vw, 168px); line-height: .82; letter-spacing: -.05em; margin: 0 0 0 -4px; text-transform: uppercase; word-break: break-word; }
+  .hero-meta { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid #000; margin: 24px -12px 0; }
+  .hero-meta > div { padding: 16px 12px; }
+  .hero-meta > div + div { border-left: 2px solid #000; }
+  h2 { font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: .1em; margin: 0; padding: 8px 12px; background: #000; color: var(--bg); }
+  .block { border-bottom: 2px solid #000; }
+  .pad { padding: 16px 12px; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { border: 1px solid #000; padding: 10px 12px; text-align: left; vertical-align: top; }
+  th { background: var(--mid); color: #fff; font-weight: normal; text-transform: uppercase; font-size: 13px; }
+  tr:hover td { background: #fff; }
+  .num { font-family: Arial, sans-serif; font-weight: 900; font-size: 44px; line-height: 1; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .grid3 > div { padding: 16px 12px; }
+  .grid3 > div + div { border-left: 2px solid #000; }
+  ul { margin: 0; padding-left: 20px; }
+  pre { margin: 0; white-space: pre-wrap; font-family: inherit; }
+  .invert { background: #000; color: var(--bg); }
+  .invert a { color: var(--bg); }
+  form { display: grid; gap: 8px; max-width: 520px; }
+  input, select { font: inherit; padding: 6px; border: 2px inset #999; background: #fff; }
+  button { font: 16px Arial, sans-serif; padding: 6px 16px; justify-self: start; }
+  [data-status] { min-height: 1.4em; margin: 0; }
+  .marquee { overflow: hidden; white-space: nowrap; border-bottom: 2px solid #000; background: #fff; padding: 6px 0; }
+  .marquee span { display: inline-block; animation: slide 22s linear infinite; padding-left: 100%; }
+  @keyframes slide { to { transform: translateX(-100%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee span { animation: none; padding-left: 12px; } }
+  footer { display: flex; justify-content: space-between; padding: 8px 12px; font-size: 13px; flex-wrap: wrap; gap: 8px; }
+  @media (max-width: 760px) {
+    .grid3, .hero-meta { grid-template-columns: 1fr; }
+    .grid3 > div + div, .hero-meta > div + div { border-left: 0; border-top: 2px solid #000; }
+    table, tbody, tr, td { display: block; }
+    thead { display: none; }
+    td { border-width: 0 0 1px; }
+    td:first-child { background: var(--mid); color: #fff; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bar"><span>STICKYMEET.HK</span><span>STATUS: PRE-LAUNCH</span><span><a href="#join">[JOIN WAITLIST]</a></span></div>
+  <div class="marquee" aria-hidden="true"><span>NO-SHOWS COST YOU TIME /// HK$100 SHOW-UP COMMITMENT /// ALIPAYHK · WECHAT PAY · FPS /// BOTH SHOW = FULL REFUND /// FLAKE = YOU GET PAID /// </span></div>
+
+  <div class="hero">
+    <h1>Show<br>up or<br>pay up.</h1>
+    <div class="hero-meta">
+      <div>StickyMeet makes a no-show cost something. The other party puts down a HK$100 commitment. Both arrive: refunded. They flake: it's paid to you.</div>
+      <div>MEETUP GUARANTEE<br>HONG KONG<br>ALIPAYHK / WECHAT PAY HK / FPS<br><a href="#join">→ join the waitlist</a></div>
+    </div>
+  </div>
+
+  <div class="block" id="how">
+    <h2>01 / Process</h2>
+    <table>
+      <thead><tr><th>Step</th><th>Action</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>01</td><td>CREATE LINK</td><td>Set time, place, commitment (HK$50–200, default HK$100). Paste into WhatsApp / Carousell chat.</td></tr>
+        <tr><td>02</td><td>COMMIT</td><td>Counterparty pays from their wallet. Funds are held by a licensed payment provider. StickyMeet holds $0.</td></tr>
+        <tr><td>03</td><td>CHECK IN</td><td>GPS geofence (~150–300m) + 6-digit code. Location read at tap only.</td></tr>
+        <tr><td>04</td><td>SETTLE</td><td>Both present → full refund. One absent → commitment paid to the one who showed.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="block">
+    <h2>02 / Users</h2>
+    <div class="pad"><pre>* TRADES ......... plumbers / electricians / AC cleaners / handymen
+* TUTORS ......... tutors / coaches / repeat sessions
+* SELLERS ........ Carousell / FB Marketplace / collectibles / electronics
+* BEAUTY ......... nails / lashes / massage
+* OTHER .......... photo shoots / flat viewings / pet rehoming / car meets</pre></div>
+  </div>
+
+  <div class="block">
+    <h2>03 / Numbers</h2>
+    <div class="grid3">
+      <div><div class="num">~40%</div>no-show rate reported by organisers of free RSVP meetups.</div>
+      <div><div class="num">HK$100</div>commitment. Not 4.9% of the full price held in escrow.</div>
+      <div><div class="num">$0</div>held by StickyMeet. Licensed provider holds funds.</div>
+    </div>
+  </div>
+
+  <div class="block" id="pricing">
+    <h2>04 / Pricing (indicative)</h2>
+    <table>
+      <thead><tr><th>Plan</th><th>Price</th><th>Includes</th></tr></thead>
+      <tbody>
+        <tr><td>SOFT</td><td>HK$0</td><td>Reminders, check-in, MeetupScore, evidence log</td></tr>
+        <tr><td>COMMIT</td><td>HK$15–20 / meetup</td><td>HK$50–200 commitment, auto refund/payout, dispute review</td></tr>
+        <tr><td>POWER</td><td>HK$99–149 / month</td><td>Unlimited commits, badge, priority support</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="block">
+    <h2>05 / FAQ</h2>
+    <div class="pad">
+      <p><b>Q: Do you hold my money?</b><br>A: No. A licensed payment provider does. We send refund/payout instructions.</p>
+      <p><b>Q: GPS failed?</b><br>A: Upload a photo from the spot. Human dispute review within 24–48h.</p>
+      <p><b>Q: MeetupScore?</b><br>A: 0–1000. Completed meetups vs flakes. Not for sale.</p>
+      <p style="margin-bottom:0"><b>Q: Launch?</b><br>A: Hong Kong soft launch. Waitlist first.</p>
+    </div>
+  </div>
+
+  <div class="block invert" id="join">
+    <h2 style="background:var(--bg);color:#000">06 / Waitlist</h2>
+    <div class="pad">
+      <form data-waitlist="brutalism" data-success="OK. YOU ARE ON THE LIST.">
+        <label for="b-email">EMAIL:</label>
+        <input id="b-email" type="email" name="email" required>
+        <label for="b-role">ROLE:</label>
+        <select id="b-role" name="role">
+          <option>Seller (Carousell / Marketplace)</option>
+          <option>Trade business</option>
+          <option>Tutor / coach</option>
+          <option>Beauty / wellness</option>
+          <option>Buyer</option>
+          <option>Other</option>
+        </select>
+        <button type="submit">Submit</button>
+        <p data-status role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <footer><span>(C) 2026 STICKYMEET. HONG KONG.</span><a href="../">&lt;- ALL DESIGN STYLES</a></footer>
+</div>
+<script src="../assets/waitlist.js"></script>
+</body>
+</html>

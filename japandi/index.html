@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StickyMeet · Japandi</title>
+<meta name="description" content="StickyMeet: a small show-up commitment that ends meetup no-shows in Hong Kong. Join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f0e8;
+    --linen: #ebe4d8;
+    --oak: #c8ab86;
+    --walnut: #7a5c41;
+    --ink: #2f2d2a;
+    --stone: #8a857c;
+    --moss: #7d8a6e;
+    --line: #dcd3c4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .serif { font-family: 'Shippori Mincho', serif; }
+
+  header { padding: 32px 0; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .logo { display: flex; align-items: center; gap: 12px; font-weight: 500; letter-spacing: .04em; text-decoration: none; }
+  .logo-mark { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--walnut); position: relative; }
+  .logo-mark::after { content: ''; position: absolute; inset: 7px; border-radius: 50%; background: var(--oak); }
+  nav a { font-size: 14px; color: var(--stone); text-decoration: none; margin-left: 28px; }
+  nav a:hover { color: var(--ink); }
+
+  .hero { padding: 80px 0 120px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; }
+  .eyebrow { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--moss); margin-bottom: 24px; }
+  h1 { font-family: 'Shippori Mincho', serif; font-weight: 400; font-size: clamp(40px, 6vw, 64px); line-height: 1.2; margin-bottom: 28px; }
+  .lede { font-size: 18px; color: #55514a; max-width: 480px; margin-bottom: 40px; }
+  .btn {
+    display: inline-block; background: var(--ink); color: var(--paper); border: 0;
+    padding: 16px 32px; border-radius: 999px; font: 400 15px 'Inter', sans-serif;
+    letter-spacing: .03em; text-decoration: none; cursor: pointer; transition: background .3s;
+  }
+  .btn:hover { background: var(--walnut); }
+
+  .stone-art { aspect-ratio: 1; position: relative; }
+  .stone-art .disc { position: absolute; border-radius: 50%; }
+  .stone-art .d1 { inset: 0; background: var(--linen); }
+  .stone-art .d2 { width: 52%; height: 52%; left: 12%; top: 26%; background: var(--oak); opacity: .8; }
+  .stone-art .d3 { width: 38%; height: 38%; right: 14%; top: 32%; background: var(--walnut); opacity: .85; }
+  .stone-art .card {
+    position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%);
+    background: #fbf8f2; border: 1px solid var(--line); border-radius: 18px;
+    padding: 18px 22px; width: 76%; box-shadow: 0 20px 40px -24px rgba(60,40,20,.3);
+  }
+  .card small { color: var(--stone); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+  .card strong { display: block; font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 600; margin: 4px 0; }
+  .card .row { display: flex; justify-content: space-between; font-size: 13px; color: #55514a; }
+  .card .ok { color: var(--moss); }
+
+  section { padding: 100px 0; border-top: 1px solid var(--line); }
+  .section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 64px; }
+  h2 { font-family: 'Shippori Mincho', serif; font-weight: 400; font-size: 36px; line-height: 1.3; }
+  .section-head p { color: #55514a; font-size: 17px; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .step .num { font-family: 'Shippori Mincho', serif; font-size: 14px; color: var(--walnut); margin-bottom: 20px; display: block; }
+  .step .num::after { content: ''; display: block; width: 32px; height: 1px; background: var(--oak); margin-top: 12px; }
+  .step h3 { font-weight: 500; font-size: 17px; margin-bottom: 10px; }
+  .step p { font-size: 15px; color: #625d55; }
+
+  .who { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .who div { background: var(--linen); border-radius: 20px; padding: 32px 24px; }
+  .who h3 { font-family: 'Shippori Mincho', serif; font-weight: 400; font-size: 20px; margin-bottom: 8px; }
+  .who p { font-size: 14px; color: #625d55; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; text-align: left; }
+  .stats strong { font-family: 'Shippori Mincho', serif; font-weight: 400; font-size: 56px; color: var(--walnut); display: block; line-height: 1.1; margin-bottom: 12px; }
+  .stats p { font-size: 15px; color: #625d55; max-width: 260px; }
+
+  .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .tier { border: 1px solid var(--line); border-radius: 24px; padding: 36px 28px; background: #f8f5ef; }
+  .tier.feature { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .tier.feature p, .tier.feature li { color: #cfc8bb; }
+  .tier h3 { font-weight: 500; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px; }
+  .tier .price { font-family: 'Shippori Mincho', serif; font-size: 34px; margin-bottom: 4px; }
+  .tier p { font-size: 14px; color: var(--stone); margin-bottom: 20px; }
+  .tier ul { list-style: none; font-size: 14px; }
+  .tier li { padding: 8px 0; border-top: 1px solid rgba(138,133,124,.25); color: #55514a; }
+  .note { font-size: 13px; color: var(--stone); margin-top: 24px; }
+
+  .faq { max-width: 720px; }
+  details { border-bottom: 1px solid var(--line); padding: 24px 0; }
+  summary { cursor: pointer; font-family: 'Shippori Mincho', serif; font-size: 20px; list-style: none; display: flex; justify-content: space-between; }
+  summary::after { content: '+'; color: var(--oak); font-family: 'Inter'; font-weight: 300; }
+  details[open] summary::after { content: '−'; }
+  details p { margin-top: 12px; color: #625d55; font-size: 15px; }
+
+  .join { background: var(--linen); border-radius: 32px; padding: 72px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  form { display: grid; gap: 14px; }
+  label { font-size: 13px; color: var(--stone); letter-spacing: .04em; }
+  input, select {
+    width: 100%; padding: 15px 20px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--paper); font: 300 15px 'Inter', sans-serif; color: var(--ink); margin-top: 6px;
+    appearance: none;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--oak); }
+  form .btn { margin-top: 8px; }
+  [data-status] { font-size: 14px; color: var(--moss); min-height: 1.4em; }
+
+  footer { padding: 56px 0; color: var(--stone); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+
+  @media (max-width: 860px) {
+    .hero, .section-head, .join { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 40px 0 80px; }
+    .steps, .who { grid-template-columns: 1fr 1fr; }
+    .stats, .pricing { grid-template-columns: 1fr; }
+    .join { padding: 48px 24px; }
+    nav a:not(:last-child) { display: none; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 520px) { .steps, .who { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><span class="logo-mark"></span>StickyMeet</a>
+    <nav><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#join">Join waitlist</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Meetup Guarantee · Hong Kong</p>
+      <h1>Meet with intention.<br>Leave the no-shows behind.</h1>
+      <p class="lede">The other side puts down a small show-up commitment of HK$100 from AlipayHK, WeChat Pay or FPS. When you both arrive, it's refunded in full. If they don't, it goes to you.</p>
+      <a class="btn" href="#join">Join the waitlist</a>
+    </div>
+    <div class="stone-art" aria-hidden="true">
+      <div class="disc d1"></div><div class="disc d2"></div><div class="disc d3"></div>
+      <div class="card">
+        <small>Sat · 3:00pm · Mong Kok MTR Exit E2</small>
+        <strong>HK$100 committed</strong>
+        <div class="row"><span>Both checked in</span><span class="ok">Refunded ✓</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="section-head">
+      <h2>How it works</h2>
+      <p>A gentle nudge with real weight. No full-price holds, no new app to install, just one link you share in the chat you're already using.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">01</span><h3>Create a link</h3><p>Set the time, place and a commitment between HK$50 and HK$200. Share it on WhatsApp or in Carousell chat.</p></div>
+      <div class="step"><span class="num">02</span><h3>They commit</h3><p>Your buyer or client pays from the wallet they already use. A licensed payment provider holds the funds. We never touch them.</p></div>
+      <div class="step"><span class="num">03</span><h3>Check in together</h3><p>Both tap in at the spot with a GPS geofence and a 6-digit code. We only read your location when you tap.</p></div>
+      <div class="step"><span class="num">04</span><h3>Settled quietly</h3><p>Both show up and the commitment is refunded within minutes. If someone flakes, it goes to whoever turned up.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Made for people whose time is the product</h2>
+      <p>Anywhere a no-show costs you a trip, a slot or an afternoon.</p>
+    </div>
+    <div class="who">
+      <div><h3>Tradespeople</h3><p>Plumbers, electricians, AC cleaners and handymen protecting every travel block.</p></div>
+      <div><h3>Tutors &amp; coaches</h3><p>Repeat sessions that actually happen, with a reputation that follows you.</p></div>
+      <div><h3>Sellers</h3><p>Carousell and Marketplace meetups for phones, cameras, furniture and collectibles.</p></div>
+      <div><h3>Beauty &amp; wellness</h3><p>Nails, lashes and massage appointments without chasing deposits.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="stats">
+      <div><strong>~40%</strong><p>no-show rate reported by organisers of free, RSVP-only meetups.</p></div>
+      <div><strong>HK$100</strong><p>a small commitment instead of a 4.9% fee on the full price in escrow.</p></div>
+      <div><strong>HK$0</strong><p>of your money held by StickyMeet. A licensed payment provider handles every cent.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="section-head">
+      <h2>Simple, planned pricing</h2>
+      <p>Start free. Pay only when you want a commitment with real weight behind it.</p>
+    </div>
+    <div class="pricing">
+      <div class="tier"><h3>Soft</h3><div class="price">Free</div><p>For everyone</p><ul><li>Reminders at T−24h, 2h, 30m</li><li>GPS + code check-in</li><li>MeetupScore reputation</li></ul></div>
+      <div class="tier feature"><h3>Commit</h3><div class="price">HK$15–20</div><p>Per committed meetup</p><ul><li>HK$50–200 show-up commitment</li><li>Auto refund or payout</li><li>Human-reviewed disputes</li></ul></div>
+      <div class="tier"><h3>Power</h3><div class="price">HK$99–149</div><p>Per month</p><ul><li>Unlimited commits</li><li>Verified badge</li><li>Priority support</li></ul></div>
+    </div>
+    <p class="note">Indicative pricing ahead of launch. Final pricing confirmed with early members.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details><summary>Do you hold my money?</summary><p>No. A licensed payment provider collects and refunds every commitment. StickyMeet only tells it whether to refund or pay out, based on check-in.</p></details>
+        <details><summary>What if GPS doesn't work?</summary><p>Upload a photo from the spot instead. Disputes go to a real person, who reviews them within 24–48 hours, and payouts wait until it's resolved.</p></details>
+        <details><summary>What is MeetupScore?</summary><p>A 0–1000 reputation built from completed meetups and flake rate. It's earned, never bought.</p></details>
+        <details><summary>When can I use it?</summary><p>We're soft-launching in Hong Kong with early waitlist members first: tradespeople, tutors and power sellers.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" style="border-top:0">
+    <div class="join">
+      <div>
+        <p class="eyebrow">Early access</p>
+        <h2>Be among the first in Hong Kong.</h2>
+      </div>
+      <form data-waitlist="japandi">
+        <label>Email<input type="email" name="email" placeholder="you@example.com" required></label>
+        <label>I mostly…
+          <select name="role">
+            <option>Sell on Carousell / Marketplace</option>
+            <option>Run a trade business</option>
+            <option>Tutor or coach</option>
+            <option>Work in beauty &amp; wellness</option>
+            <option>Buy things second-hand</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <button class="btn" type="submit">Join the waitlist</button>
+        <p data-status role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 StickyMeet · Hong Kong · Pre-launch</span><a href="../">← All design styles</a></div>
+</footer>
+<script src="../assets/waitlist.js"></script>
+</body>
+</html>

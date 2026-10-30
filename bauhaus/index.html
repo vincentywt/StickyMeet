@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StickyMeet · Bauhaus</title>
+<meta name="description" content="StickyMeet: a small show-up commitment that ends meetup no-shows in Hong Kong. Join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d8352a;
+    --blue: #1f4fa3;
+    --yellow: #f2b705;
+    --black: #141414;
+    --paper: #f1ece2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Jost', sans-serif; background: var(--paper); color: var(--black); }
+  a { color: inherit; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 3px solid var(--black); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+  .logo { display: flex; align-items: center; gap: 6px; font-weight: 900; font-size: 22px; text-decoration: none; text-transform: uppercase; letter-spacing: .02em; }
+  .logo i { display: inline-block; width: 18px; height: 18px; }
+  .logo i:nth-child(1) { background: var(--red); border-radius: 50%; }
+  .logo i:nth-child(2) { background: var(--blue); }
+  .logo i:nth-child(3) { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 18px solid var(--yellow); margin-right: 8px; }
+  header nav a { text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 14px; letter-spacing: .1em; margin-left: 32px; }
+
+  .hero { display: grid; grid-template-columns: repeat(12, 1fr); border-bottom: 3px solid var(--black); min-height: 600px; }
+  .hero-text { grid-column: span 7; padding: 72px 48px 72px 0; display: flex; flex-direction: column; justify-content: center; border-right: 3px solid var(--black); }
+  .kicker { font-weight: 500; text-transform: uppercase; letter-spacing: .3em; font-size: 13px; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+  .kicker::before { content: ''; width: 40px; height: 3px; background: var(--red); }
+  h1 { font-weight: 900; font-size: clamp(48px, 7.5vw, 104px); line-height: .9; text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 32px; }
+  h1 em { font-style: normal; color: var(--red); }
+  .lede { font-size: 19px; line-height: 1.55; max-width: 520px; margin-bottom: 36px; }
+  .btn { display: inline-flex; align-items: center; gap: 16px; background: var(--black); color: var(--paper); border: 0; font: 700 16px 'Jost'; text-transform: uppercase; letter-spacing: .12em; padding: 20px 28px; text-decoration: none; cursor: pointer; align-self: flex-start; }
+  .btn::after { content: ''; width: 14px; height: 14px; border-radius: 50%; background: var(--yellow); }
+  .btn:hover { background: var(--red); }
+
+  .composition { grid-column: span 5; position: relative; overflow: hidden; background: var(--paper); }
+  .composition > div { position: absolute; }
+  .c-blue { left: 0; top: 0; width: 60%; height: 55%; background: var(--blue); }
+  .c-red { right: 8%; top: 12%; width: 46%; aspect-ratio: 1; border-radius: 50%; background: var(--red); mix-blend-mode: multiply; }
+  .c-yellow { left: 12%; bottom: 0; width: 0; height: 0; border-left: 120px solid transparent; border-right: 120px solid transparent; border-bottom: 210px solid var(--yellow); }
+  .c-bar { right: 0; bottom: 18%; width: 55%; height: 22px; background: var(--black); }
+  .c-ring { right: 12%; bottom: 4%; width: 90px; height: 90px; border-radius: 50%; border: 14px solid var(--black); }
+  .c-half { left: 60%; top: 55%; width: 120px; height: 60px; border-radius: 0 0 120px 120px; background: var(--blue); }
+
+  .band { display: grid; grid-template-columns: 1fr 3fr; border-bottom: 3px solid var(--black); }
+  .band-label { padding: 48px 24px 48px 0; border-right: 3px solid var(--black); }
+  .band-label h2 { font-weight: 900; font-size: 34px; text-transform: uppercase; line-height: 1; }
+  .band-label .shape { margin-top: 24px; width: 48px; height: 48px; }
+  .band-body { padding: 0; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); height: 100%; }
+  .step { padding: 48px 28px; border-right: 3px solid var(--black); }
+  .step:last-child { border-right: 0; }
+  .step .n { font-weight: 900; font-size: 72px; line-height: 1; margin-bottom: 20px; }
+  .step:nth-child(1) .n { color: var(--red); }
+  .step:nth-child(2) .n { color: var(--blue); }
+  .step:nth-child(3) .n { color: var(--yellow); }
+  .step h3 { font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 17px; margin-bottom: 10px; }
+  .step p { font-size: 15px; line-height: 1.55; }
+
+  .who { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .who div { padding: 40px 28px; border-right: 3px solid var(--black); }
+  .who div:last-child { border-right: 0; }
+  .who div:nth-child(1) { background: var(--red); color: var(--paper); }
+  .who div:nth-child(3) { background: var(--yellow); }
+  .who h3 { font-weight: 900; text-transform: uppercase; font-size: 20px; margin-bottom: 10px; }
+  .who p { font-size: 15px; line-height: 1.5; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .stat { padding: 48px 28px; border-right: 3px solid var(--black); display: flex; gap: 20px; align-items: flex-start; }
+  .stat:last-child { border-right: 0; }
+  .stat strong { font-weight: 900; font-size: 52px; line-height: 1; display: block; margin-bottom: 10px; }
+  .stat p { font-size: 15px; line-height: 1.5; }
+
+  .pricing { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .tier { padding: 44px 28px; border-right: 3px solid var(--black); }
+  .tier:last-child { border-right: 0; }
+  .tier.mid { background: var(--blue); color: var(--paper); }
+  .tier h3 { text-transform: uppercase; letter-spacing: .2em; font-size: 14px; font-weight: 500; }
+  .tier .price { font-weight: 900; font-size: 44px; margin: 12px 0 4px; }
+  .tier ul { list-style: none; margin-top: 20px; }
+  .tier li { padding: 10px 0; border-top: 2px solid currentColor; font-size: 15px; }
+  .fine { padding: 20px 28px; font-size: 13px; border-top: 3px solid var(--black); }
+
+  .faq { display: grid; grid-template-columns: 1fr 1fr; }
+  .faq div { padding: 36px 28px; border-right: 3px solid var(--black); border-bottom: 3px solid var(--black); }
+  .faq div:nth-child(2n) { border-right: 0; }
+  .faq div:nth-child(n+3) { border-bottom: 0; }
+  .faq h3 { font-weight: 700; text-transform: uppercase; font-size: 17px; margin-bottom: 8px; letter-spacing: .04em; }
+  .faq p { line-height: 1.55; font-size: 15px; }
+
+  .join { display: grid; grid-template-columns: 1fr 1fr; background: var(--black); color: var(--paper); }
+  .join-left { padding: 72px 48px 72px 24px; position: relative; overflow: hidden; }
+  .join-left h2 { font-weight: 900; font-size: clamp(40px, 5vw, 68px); text-transform: uppercase; line-height: .92; position: relative; z-index: 1; }
+  .join-left .sun { position: absolute; right: -60px; bottom: -60px; width: 240px; height: 240px; border-radius: 50%; background: var(--yellow); }
+  .join-right { padding: 72px 48px; background: var(--red); }
+  form { display: grid; gap: 18px; }
+  label { text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 700; }
+  input, select { display: block; width: 100%; margin-top: 8px; padding: 16px; border: 3px solid var(--black); background: var(--paper); font: 500 17px 'Jost'; border-radius: 0; color: var(--black); }
+  input:focus, select:focus { outline: 3px solid var(--yellow); outline-offset: 0; }
+  .join .btn { background: var(--black); }
+  .join .btn:hover { background: var(--blue); }
+  [data-status] { font-weight: 700; min-height: 1.4em; }
+
+  footer .wrap { display: flex; justify-content: space-between; padding: 28px 24px; font-size: 14px; text-transform: uppercase; letter-spacing: .1em; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-text { grid-column: auto; border-right: 0; padding: 48px 0; border-bottom: 3px solid var(--black); }
+    .composition { grid-column: auto; height: 340px; }
+    .band { grid-template-columns: 1fr; }
+    .band-label { border-right: 0; border-bottom: 3px solid var(--black); padding: 32px 0; display: flex; justify-content: space-between; align-items: center; }
+    .band-label .shape { margin-top: 0; }
+    .steps, .who { grid-template-columns: 1fr 1fr; }
+    .step:nth-child(2), .who div:nth-child(2) { border-right: 0; }
+    .step:nth-child(-n+2), .who div:nth-child(-n+2) { border-bottom: 3px solid var(--black); }
+    .stats, .pricing, .faq, .join { grid-template-columns: 1fr; }
+    .stat, .tier, .faq div { border-right: 0 !important; border-bottom: 3px solid var(--black) !important; }
+    .join-left, .join-right { padding: 48px 24px; }
+    header nav a:not(:last-child) { display: none; }
+  }
+  @media (max-width: 520px) {
+    .steps, .who { grid-template-columns: 1fr; }
+    .step, .who div { border-right: 0 !important; border-bottom: 3px solid var(--black); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><i></i><i></i><i></i>StickyMeet</a>
+    <nav><a href="#how">Method</a><a href="#pricing">Pricing</a><a href="#join">Waitlist</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="kicker">Meetup Guarantee · Hong Kong</p>
+      <h1>Form follows <em>show-up.</em></h1>
+      <p class="lede">A HK$100 show-up commitment, paid from AlipayHK, WeChat Pay or FPS. Both present: full refund. One absent: the commitment goes to whoever kept the appointment.</p>
+      <a class="btn" href="#join">Join the waitlist</a>
+    </div>
+    <div class="composition" aria-hidden="true">
+      <div class="c-blue"></div><div class="c-red"></div><div class="c-yellow"></div>
+      <div class="c-bar"></div><div class="c-ring"></div><div class="c-half"></div>
+    </div>
+  </div>
+
+  <div class="band" id="how">
+    <div class="band-label"><h2>The<br>Method</h2><div class="shape" style="background:var(--red);border-radius:50%"></div></div>
+    <div class="band-body">
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3>Create</h3><p>Time, place, commitment of HK$50–200. One link, shared on WhatsApp or Carousell chat.</p></div>
+        <div class="step"><div class="n">2</div><h3>Commit</h3><p>Paid from a local wallet. A licensed payment provider holds the funds, never StickyMeet.</p></div>
+        <div class="step"><div class="n">3</div><h3>Check in</h3><p>GPS geofence plus a 6-digit code, read only at the moment you tap.</p></div>
+        <div class="step"><div class="n">4</div><h3>Settle</h3><p>Both present: refunded in minutes. A flake: paid out to the person who came.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band-label"><h2>Who</h2><div class="shape" style="background:var(--blue)"></div></div>
+    <div class="band-body who">
+      <div><h3>Trades</h3><p>Plumbers, electricians, AC cleaners, handymen.</p></div>
+      <div><h3>Tutors</h3><p>Coaches and teachers with repeat sessions.</p></div>
+      <div><h3>Sellers</h3><p>Carousell and Facebook Marketplace meetups.</p></div>
+      <div><h3>Beauty</h3><p>Nails, lashes, massage appointments.</p></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band-label"><h2>Facts</h2><div class="shape" style="width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-bottom:44px solid var(--yellow)"></div></div>
+    <div class="band-body stats">
+      <div class="stat"><div><strong>~40%</strong><p>no-show rate reported by organisers of free RSVP meetups.</p></div></div>
+      <div class="stat"><div><strong>HK$100</strong><p>small commitment, not 4.9% of the full price held in escrow.</p></div></div>
+      <div class="stat"><div><strong>0</strong><p>dollars held by StickyMeet. A licensed provider handles the money.</p></div></div>
+    </div>
+  </div>
+
+  <div class="band" id="pricing">
+    <div class="band-label"><h2>Pricing</h2><div class="shape" style="background:var(--black);border-radius:50% 50% 0 0"></div></div>
+    <div class="band-body">
+      <div class="pricing">
+        <div class="tier"><h3>Soft</h3><div class="price">Free</div><p>Always on</p><ul><li>Reminders</li><li>Check-in</li><li>MeetupScore</li></ul></div>
+        <div class="tier mid"><h3>Commit</h3><div class="price">HK$15–20</div><p>Per meetup</p><ul><li>HK$50–200 commitment</li><li>Auto refund or payout</li><li>Dispute review</li></ul></div>
+        <div class="tier"><h3>Power</h3><div class="price">HK$99–149</div><p>Per month</p><ul><li>Unlimited commits</li><li>Badge</li><li>Priority support</li></ul></div>
+      </div>
+      <p class="fine">Indicative pre-launch pricing.</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band-label"><h2>FAQ</h2><div class="shape" style="border:8px solid var(--black);border-radius:50%"></div></div>
+    <div class="band-body faq">
+      <div><h3>Who holds the money?</h3><p>A licensed payment provider. StickyMeet only instructs a refund or a payout.</p></div>
+      <div><h3>No GPS signal?</h3><p>Upload a photo from the spot. A person reviews disputes within 24–48 hours.</p></div>
+      <div><h3>MeetupScore</h3><p>0–1000. Built from completed meetups and flake rate. Not for sale.</p></div>
+      <div><h3>Launch</h3><p>Hong Kong first. Waitlist members join the soft launch.</p></div>
+    </div>
+  </div>
+</main>
+
+<section id="join" class="wrap">
+  <div class="join">
+    <div class="join-left"><div class="sun" aria-hidden="true"></div><h2>Join<br>the<br>waitlist.</h2></div>
+    <div class="join-right">
+      <form data-waitlist="bauhaus">
+        <label>Email<input type="email" name="email" required></label>
+        <label>Role
+          <select name="role">
+            <option>Carousell / Marketplace seller</option>
+            <option>Trade business</option>
+            <option>Tutor or coach</option>
+            <option>Beauty &amp; wellness</option>
+            <option>Second-hand buyer</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <button class="btn" type="submit">Submit</button>
+        <p data-status role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 StickyMeet · Hong Kong</span><a href="../">← All design styles</a></div></footer>
+<script src="../assets/waitlist.js"></script>
+</body>
+</html>
